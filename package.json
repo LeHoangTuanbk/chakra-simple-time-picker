@@ -1,0 +1,74 @@
+{
+  "name": "chakra-time-picker",
+  "version": "1.0.0",
+  "description": "A customizable time picker component for React using Chakra UI",
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && tsc --outDir dist/esm --module esnext",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "npm run build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "keywords": [
+    "react",
+    "chakra-ui",
+    "time-picker",
+    "component",
+    "ui"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "@chakra-ui/react": ">=3.0.0",
+    "@emotion/react": ">=11.0.0",
+    "@heroicons/react": ">=2.0.0",
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  },
+  "devDependencies": {
+    "@chakra-ui/hooks": "^2.4.2",
+    "@chakra-ui/react": "^3.17.0",
+    "@chakra-ui/toast": "^7.0.2",
+    "@emotion/react": "^11.14.0",
+    "@heroicons/react": "^2.2.0",
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@storybook/addon-essentials": "^8.6.4",
+    "@storybook/addon-onboarding": "^8.6.4",
+    "@storybook/blocks": "^8.6.4",
+    "@storybook/react": "^8.6.4",
+    "@storybook/react-vite": "^8.6.4",
+    "@storybook/test": "^8.6.4",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@vitejs/plugin-react": "^4.2.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "rollup": "^3.20.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "storybook": "^8.6.4",
+    "tslib": "^2.5.0",
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/chakra-time-picker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/chakra-time-picker/issues"
+  },
+  "homepage": "https://github.com/yourusername/chakra-time-picker#readme",
+  "dependencies": {
+    "@chakra-ui/theme": "^3.4.6",
+    "@emotion/styled": "^11.14.0",
+    "framer-motion": "^12.11.0"
+  }
+}
