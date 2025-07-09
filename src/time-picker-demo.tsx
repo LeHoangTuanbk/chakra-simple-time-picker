@@ -1,21 +1,24 @@
-import React, { useState } from 'react';
-import { ChakraProvider, Box, VStack, Text, Button } from '@chakra-ui/react';
-import { TimePicker } from './time-picker';
+import React, { useState } from "react";
+import { ChakraProvider, Box, VStack, Text, Button } from "@chakra-ui/react";
+import { TimePicker } from "./time-picker";
+import { theme } from "./theme";
 
 const TimePickerDemo = () => {
-  const [time1, setTime1] = useState('21:55');
-  const [time2, setTime2] = useState('09:05');
-  const [time3, setTime3] = useState('00:00');
+  const [time1, setTime1] = useState("21:55");
+  const [time2, setTime2] = useState("09:05");
+  const [time3, setTime3] = useState("00:00");
 
   return (
-    <ChakraProvider>
+    <ChakraProvider value={theme}>
       <Box p={8} maxW="400px" mx="auto">
-        <VStack spacing={6}>
+        <VStack gap={6}>
           <Box>
-            <Text mb={2} fontWeight="bold">Test Time: 21:55</Text>
-            <TimePicker 
-              value={time1} 
-              onChange={setTime1} 
+            <Text mb={2} fontWeight="bold">
+              Test Time: 21:55
+            </Text>
+            <TimePicker
+              value={time1}
+              onChange={setTime1}
               placeholder="Select time"
             />
             <Text mt={2} fontSize="sm" color="gray.600">
@@ -24,10 +27,12 @@ const TimePickerDemo = () => {
           </Box>
 
           <Box>
-            <Text mb={2} fontWeight="bold">Test Time: 09:05</Text>
-            <TimePicker 
-              value={time2} 
-              onChange={setTime2} 
+            <Text mb={2} fontWeight="bold">
+              Test Time: 09:05
+            </Text>
+            <TimePicker
+              value={time2}
+              onChange={setTime2}
               placeholder="Select time"
             />
             <Text mt={2} fontSize="sm" color="gray.600">
@@ -36,10 +41,12 @@ const TimePickerDemo = () => {
           </Box>
 
           <Box>
-            <Text mb={2} fontWeight="bold">Test Time: 00:00</Text>
-            <TimePicker 
-              value={time3} 
-              onChange={setTime3} 
+            <Text mb={2} fontWeight="bold">
+              Test Time: 00:00
+            </Text>
+            <TimePicker
+              value={time3}
+              onChange={setTime3}
               placeholder="Select time"
             />
             <Text mt={2} fontSize="sm" color="gray.600">
@@ -47,11 +54,13 @@ const TimePickerDemo = () => {
             </Text>
           </Box>
 
-          <Button onClick={() => {
-            setTime1('15:30');
-            setTime2('18:45');
-            setTime3('12:15');
-          }}>
+          <Button
+            onClick={() => {
+              setTime1("15:30");
+              setTime2("18:45");
+              setTime3("12:15");
+            }}
+          >
             Change Times
           </Button>
         </VStack>
