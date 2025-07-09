@@ -4,14 +4,18 @@ A beautiful and customizable time picker component for React using Chakra UI v3.
 
 ![Chakra Time Picker Demo](./src//docs/images/demo.png)
 
+# Motivation
+
+I'm a big fan of Chakra UI and its convenient style props. In several projects, we needed a time picker component for selecting time of day, but Chakra UI v3 doesn't include one yet. After using Ant Design's time picker as a workaround (which wasn't ideal for our Chakra-based projects), I decided to build my own using Chakra UI's pre-built components. I published this to npm registry primarily for my own future use - making it easy to reuse across projects.
+
 ## Installation
 
 ```bash
-npm install chakra-time-picker
+npm install chakra-ui-simple-time-picker
 # or
-yarn add chakra-time-picker
+yarn add chakra-ui-simple-time-picker
 # or
-pnpm add chakra-time-picker
+pnpm add chakra-ui-simple-time-picker
 ```
 
 ## Requirements
@@ -134,6 +138,12 @@ Contributions are welcome! Please feel free to submit a pull request.
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
+
+## Roadmap
+
+- [x] Build basic component with Storybook:
+- [ ] Add internationalization (i18n) support for text elements
+- [ ] Add component tests with React Testing Library
 
 ## License
 
