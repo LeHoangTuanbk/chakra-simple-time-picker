@@ -22,7 +22,11 @@
     "component",
     "ui"
   ],
-  "author": "lehoangtuanbk",
+  "author": {
+    "name": "Le Hoang Tuan",
+    "email": "lehoangtuanbk@gmail.com",
+    "url": "https://github.com/LeHoangTuanbk"
+  },
   "license": "MIT",
   "peerDependencies": {
     "@chakra-ui/react": ">=3.0.0",
