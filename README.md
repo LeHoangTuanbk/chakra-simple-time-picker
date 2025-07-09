@@ -97,15 +97,15 @@ The time picker consists of:
 
 ## Props
 
-| Prop        | Type     | Required | Default       | Description                                |
-| ----------- | -------- | -------- | ------------- | ------------------------------------------ |
-| value       | string   | Yes      | "00:00"       | The current time value in "HH:MM" format   |
-| onChange    | function | Yes      | -             | Callback function called when time changes |
-| locale      | Locale   | No       | "en"          | Language locale for button text and placeholder |
-| width       | string   | No       | "200px"       | Width of the time picker input             |
-| placeholder | string   | No       | Auto-localized | Placeholder text when no time is selected  |
-| disabled    | boolean  | No       | false         | Disables the time picker when true         |
-| isReadOnly  | boolean  | No       | false         | Makes the time picker read-only when true  |
+| Prop        | Type     | Required | Default        | Description                                     |
+| ----------- | -------- | -------- | -------------- | ----------------------------------------------- |
+| value       | string   | Yes      | "00:00"        | The current time value in "HH:MM" format        |
+| onChange    | function | Yes      | -              | Callback function called when time changes      |
+| locale      | Locale   | No       | "en"           | Language locale for button text and placeholder |
+| width       | string   | No       | "200px"        | Width of the time picker input                  |
+| placeholder | string   | No       | Auto-localized | Placeholder text when no time is selected       |
+| disabled    | boolean  | No       | false          | Disables the time picker when true              |
+| isReadOnly  | boolean  | No       | false          | Makes the time picker read-only when true       |
 
 ## Internationalization
 
@@ -116,7 +116,7 @@ The TimePicker supports 8 languages out of the box:
 - **Spanish (es)**: "Ahora", "Aceptar", "Seleccionar hora"
 - **French (fr)**: "Maintenant", "OK", "Sélectionner l'heure"
 - **German (de)**: "Jetzt", "OK", "Zeit auswählen"
-- **Japanese (ja)**: "今", "OK", "時間を選択"
+- **Japanese (ja)**: "現在", "OK", "時間を選択"
 - **Korean (ko)**: "지금", "확인", "시간 선택"
 - **Chinese (zh)**: "现在", "确定", "选择时间"
 
@@ -180,6 +180,7 @@ npm run test:coverage
 ```
 
 Tests cover:
+
 - Basic rendering and interaction
 - Internationalization for all supported languages
 - Time selection functionality
