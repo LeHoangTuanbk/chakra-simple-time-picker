@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   Box,
   Button,
@@ -19,24 +19,49 @@ export type TimePickerProps = {
   isReadOnly?: boolean;
 };
 
-export const TimePicker = ({ 
-  value, 
-  onChange, 
+export const TimePicker = ({
+  value,
+  onChange,
   locale = "en",
   width = "200px",
   placeholder,
   disabled = false,
-  isReadOnly = false
+  isReadOnly = false,
 }: TimePickerProps) => {
   const { open, onOpen, onClose } = useDisclosure();
   const [selectedTime, setSelectedTime] = useState(value || "");
-  const [hours, minutes] = selectedTime ? selectedTime.split(":").map(Number) : [0, 0];
+  const [hours, minutes] = selectedTime
+    ? selectedTime.split(":").map(Number)
+    : [0, 0];
   const localeData = getLocale(locale);
-  const displayPlaceholder = placeholder || localeData.placeholder || "Select time";
+  const displayPlaceholder =
+    placeholder || localeData.placeholder || "Select time";
+  const hoursRef = useRef<HTMLDivElement>(null);
+  const minutesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setSelectedTime(value || "");
   }, [value]);
+
+  useEffect(() => {
+    if (open && selectedTime) {
+      const [h, m] = selectedTime.split(":").map(Number);
+
+      if (hoursRef.current) {
+        const hourElement = hoursRef.current.children[h] as HTMLElement;
+        if (hourElement) {
+          hourElement.scrollIntoView({ block: "center", behavior: "smooth" });
+        }
+      }
+
+      if (minutesRef.current) {
+        const minuteElement = minutesRef.current.children[m] as HTMLElement;
+        if (minuteElement) {
+          minuteElement.scrollIntoView({ block: "center", behavior: "smooth" });
+        }
+      }
+    }
+  }, [open, selectedTime]);
 
   const hoursArray = Array.from({ length: 24 }, (_, i) => i);
   const minutesArray = Array.from({ length: 60 }, (_, i) => i);
@@ -82,15 +107,19 @@ export const TimePicker = ({
         borderRadius="md"
         opacity={disabled ? 0.6 : 1}
         _hover={disabled || isReadOnly ? {} : { borderColor: "#40a9ff" }}
-        _focus={disabled || isReadOnly ? {} : {
-          borderColor: "#1890ff",
-          boxShadow: "0 0 0 2px rgba(24,144,255,0.2)",
-        }}
+        _focus={
+          disabled || isReadOnly
+            ? {}
+            : {
+                borderColor: "#1890ff",
+                boxShadow: "0 0 0 2px rgba(24,144,255,0.2)",
+              }
+        }
       >
-        <Box 
-          flex="1" 
-          textAlign="center" 
-          fontWeight="normal" 
+        <Box
+          flex="1"
+          textAlign="center"
+          fontWeight="normal"
           padding="0 10px"
           color={disabled ? "gray.500" : "inherit"}
         >
@@ -125,6 +154,7 @@ export const TimePicker = ({
           <Flex>
             {/* Hours Column */}
             <Box
+              ref={hoursRef}
               width="50%"
               height="220px"
               overflowY="auto"
@@ -164,6 +194,7 @@ export const TimePicker = ({
 
             {/* Minutes Column */}
             <Box
+              ref={minutesRef}
               width="50%"
               height="220px"
               overflowY="auto"
