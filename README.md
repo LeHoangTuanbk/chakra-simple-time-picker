@@ -76,11 +76,13 @@ function App() {
 - **Modern Interface**: Clean, intuitive design inspired by Ant Design
 - **24-hour time format**: Shows hours (00-23) and minutes (00-59)
 - **Two-column selection**: Easy selection of hours and minutes
+- **Internationalization (i18n)**: Support for 8 languages (English, Vietnamese, Spanish, French, German, Japanese, Korean, Chinese)
 - **Custom Styling**: Fully customizable with Chakra UI theme
 - **TypeScript Support**: Full TypeScript support with type definitions
 - **Keyboard Accessibility**: Accessible via keyboard navigation
 - **"Now" Button**: Quickly set current time
 - **Smooth Animations**: Clean, polished UI transitions
+- **Comprehensive Testing**: Full test coverage with React Testing Library
 
 ## Component Design
 
@@ -99,10 +101,50 @@ The time picker consists of:
 | ----------- | -------- | -------- | ------------- | ------------------------------------------ |
 | value       | string   | Yes      | "00:00"       | The current time value in "HH:MM" format   |
 | onChange    | function | Yes      | -             | Callback function called when time changes |
+| locale      | Locale   | No       | "en"          | Language locale for button text and placeholder |
 | width       | string   | No       | "200px"       | Width of the time picker input             |
-| placeholder | string   | No       | "Select time" | Placeholder text when no time is selected  |
+| placeholder | string   | No       | Auto-localized | Placeholder text when no time is selected  |
 | disabled    | boolean  | No       | false         | Disables the time picker when true         |
 | isReadOnly  | boolean  | No       | false         | Makes the time picker read-only when true  |
+
+## Internationalization
+
+The TimePicker supports 8 languages out of the box:
+
+- **English (en)**: "Now", "OK", "Select time"
+- **Vietnamese (vi)**: "Hiện tại", "Xác nhận", "Chọn thời gian"
+- **Spanish (es)**: "Ahora", "Aceptar", "Seleccionar hora"
+- **French (fr)**: "Maintenant", "OK", "Sélectionner l'heure"
+- **German (de)**: "Jetzt", "OK", "Zeit auswählen"
+- **Japanese (ja)**: "今", "OK", "時間を選択"
+- **Korean (ko)**: "지금", "확인", "시간 선택"
+- **Chinese (zh)**: "现在", "确定", "选择时间"
+
+### Usage with Locales
+
+```jsx
+// Vietnamese
+<TimePicker
+  value={time}
+  onChange={setTime}
+  locale="vi"
+/>
+
+// Spanish
+<TimePicker
+  value={time}
+  onChange={setTime}
+  locale="es"
+/>
+
+// Custom placeholder overrides locale
+<TimePicker
+  value={time}
+  onChange={setTime}
+  locale="ja"
+  placeholder="カスタム時間"
+/>
+```
 
 ## Customization
 
@@ -121,6 +163,28 @@ You can customize the TimePicker by adding Chakra UI props to the component.
   }}
 />
 ```
+
+## Testing
+
+The component includes comprehensive tests using React Testing Library and Jest:
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage
+npm run test:coverage
+```
+
+Tests cover:
+- Basic rendering and interaction
+- Internationalization for all supported languages
+- Time selection functionality
+- Disabled and read-only states
+- Props validation and edge cases
 
 ## Browser Support
 
@@ -141,9 +205,9 @@ Contributions are welcome! Please feel free to submit a pull request.
 
 ## Roadmap
 
-- [x] Build basic component with Storybook:
-- [ ] Add internationalization (i18n) support for text elements
-- [ ] Add component tests with React Testing Library
+- [x] Build basic component with Storybook
+- [x] Add internationalization (i18n) support for text elements
+- [x] Add component tests with React Testing Library
 
 ## License
 

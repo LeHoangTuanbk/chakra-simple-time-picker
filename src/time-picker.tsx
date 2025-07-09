@@ -7,28 +7,42 @@ import {
   Center,
   useDisclosure,
 } from "@chakra-ui/react";
+import { Locale, getLocale } from "./locales";
 
 export type TimePickerProps = {
   value: string;
   onChange: (value: string) => void;
+  locale?: Locale;
+  width?: string;
+  placeholder?: string;
+  disabled?: boolean;
+  isReadOnly?: boolean;
 };
 
-export const TimePicker = ({ value, onChange }: TimePickerProps) => {
+export const TimePicker = ({ 
+  value, 
+  onChange, 
+  locale = "en",
+  width = "200px",
+  placeholder,
+  disabled = false,
+  isReadOnly = false
+}: TimePickerProps) => {
   const { open, onOpen, onClose } = useDisclosure();
-  const [selectedTime, setSelectedTime] = useState(value || "00:00");
-  const [hours, minutes] = selectedTime.split(":").map(Number);
+  const [selectedTime, setSelectedTime] = useState(value || "");
+  const [hours, minutes] = selectedTime ? selectedTime.split(":").map(Number) : [0, 0];
+  const localeData = getLocale(locale);
+  const displayPlaceholder = placeholder || localeData.placeholder || "Select time";
 
   useEffect(() => {
-    if (value) {
-      setSelectedTime(value);
-    }
+    setSelectedTime(value || "");
   }, [value]);
 
   const hoursArray = Array.from({ length: 24 }, (_, i) => i);
   const minutesArray = Array.from({ length: 60 }, (_, i) => i);
 
   const handleTimeSelect = (type: "hour" | "minute", value: number) => {
-    let [h, m] = selectedTime.split(":").map(Number);
+    let [h, m] = selectedTime ? selectedTime.split(":").map(Number) : [0, 0];
 
     if (type === "hour") h = value;
     if (type === "minute") m = value;
@@ -49,31 +63,38 @@ export const TimePicker = ({ value, onChange }: TimePickerProps) => {
   };
 
   const handleOk = () => {
-    onChange(selectedTime);
+    onChange(selectedTime || "00:00");
     onClose();
   };
 
   return (
     <Box position="relative">
       <Box
-        onClick={onOpen}
+        onClick={disabled || isReadOnly ? undefined : onOpen}
         display="flex"
         alignItems="center"
         borderWidth="1.5px"
-        borderColor="gray.200"
-        width="200px"
+        borderColor={disabled ? "gray.300" : "gray.200"}
+        width={width}
         height="40px"
-        bg="white"
-        cursor="pointer"
+        bg={disabled ? "gray.100" : "white"}
+        cursor={disabled || isReadOnly ? "not-allowed" : "pointer"}
         borderRadius="md"
-        _hover={{ borderColor: "#40a9ff" }}
-        _focus={{
+        opacity={disabled ? 0.6 : 1}
+        _hover={disabled || isReadOnly ? {} : { borderColor: "#40a9ff" }}
+        _focus={disabled || isReadOnly ? {} : {
           borderColor: "#1890ff",
           boxShadow: "0 0 0 2px rgba(24,144,255,0.2)",
         }}
       >
-        <Box flex="1" textAlign="center" fontWeight="normal" padding="0 10px">
-          {selectedTime}
+        <Box 
+          flex="1" 
+          textAlign="center" 
+          fontWeight="normal" 
+          padding="0 10px"
+          color={disabled ? "gray.500" : "inherit"}
+        >
+          {selectedTime || displayPlaceholder}
         </Box>
         <Box
           display="flex"
@@ -81,14 +102,14 @@ export const TimePicker = ({ value, onChange }: TimePickerProps) => {
           justifyContent="center"
           height="100%"
           width="40px"
-          bg="white"
-          color="gray.500"
+          bg={disabled ? "gray.100" : "white"}
+          color={disabled ? "gray.400" : "gray.500"}
         >
           <ClockIcon />
         </Box>
       </Box>
 
-      {open && (
+      {open && !disabled && !isReadOnly && (
         <Box
           position="absolute"
           top="calc(100% + 4px)"
@@ -194,7 +215,7 @@ export const TimePicker = ({ value, onChange }: TimePickerProps) => {
               fontWeight="normal"
               fontSize="sm"
             >
-              Now
+              {localeData.now}
             </Button>
             <Button
               bg="#1890ff"
@@ -206,7 +227,7 @@ export const TimePicker = ({ value, onChange }: TimePickerProps) => {
               fontWeight="normal"
               px={4}
             >
-              OK
+              {localeData.ok}
             </Button>
           </Flex>
         </Box>
