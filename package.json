@@ -22,7 +22,7 @@
     "component",
     "ui"
   ],
-  "author": "",
+  "author": "lehoangtuanbk",
   "license": "MIT",
   "peerDependencies": {
     "@chakra-ui/react": ">=3.0.0",
@@ -60,12 +60,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/chakra-time-picker.git"
+    "url": "git+https://github.com/LeHoangTuanbk/chakra-simple-time-picker.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/chakra-time-picker/issues"
+    "url": "https://github.com/LeHoangTuanbk/chakra-simple-time-picker/issues"
   },
-  "homepage": "https://github.com/yourusername/chakra-time-picker#readme",
+  "homepage": "https://github.com/LeHoangTuanbk/chakra-simple-time-picker#readme",
   "dependencies": {
     "@chakra-ui/theme": "^3.4.6",
     "@emotion/styled": "^11.14.0",
