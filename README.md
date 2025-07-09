@@ -2,7 +2,7 @@
 
 A beautiful and customizable time picker component for React using Chakra UI v3. Inspired by Ant Design's aesthetics with a modern, clean interface.
 
-![Chakra Time Picker Demo](https://i.imgur.com/DI3yX6D.png)
+![Chakra Time Picker Demo](./src//docs/images/demo.png)
 
 ## Installation
 
