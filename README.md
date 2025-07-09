@@ -210,6 +210,7 @@ Contributions are welcome! Please feel free to submit a pull request.
 - [x] Add internationalization (i18n) support for text elements
 - [x] Add component tests with React Testing Library
 - [ ] Support hours are more than 24 hours
+- [ ] Refactor code, remove comments
 
 ## License
 
